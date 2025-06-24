@@ -56,29 +56,32 @@ const MyAccount = () => {
       />
       <div style={{ position: "relative", zIndex: 2 }}>
         <NavBar />
-          <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
             <div className="profile-container">
               <div className="text-center fw-bold mb-4" style={{ fontSize: "22px" }}>
                 Profile
               </div>
               {userData ? (
                 <>
-                  <div className="d-flex gap-2 mb-2">
-                    <div className="fw-bold">Name:</div>
-                    <div>{userData.firstName} {userData.lastName}</div>
+                  <div className="d-flex flex-column align-items-center text-center mb-4">
+                    <div className="d-flex gap-2 mb-2 align-items-center">
+                      <div className="fw-bold">Name:</div>
+                      <div>{userData.firstName} {userData.lastName}</div>
+                    </div>
+                    <div className="d-flex gap-2 mb-2 align-items-center">
+                      <div className="fw-bold">Email:</div>
+                      <div>{userData.email}</div>
+                    </div>
+                    <div className="d-flex gap-2 mb-2 align-items-center">
+                      <div className="fw-bold">Phone No:</div>
+                      <div>{userData.phoneNumber}</div>
+                    </div>
+                    <div className="d-flex gap-2 mb-4 align-items-center">
+                      <div className="fw-bold">Gender:</div>
+                      <div>{userData.gender}</div>
+                    </div>
                   </div>
-                  <div className="d-flex gap-2 mb-2">
-                    <div className="fw-bold">Email:</div>
-                    <div>{userData.email}</div>
-                  </div>
-                  <div className="d-flex gap-2 mb-2">
-                    <div className="fw-bold">Phone No:</div>
-                    <div>{userData.phoneNumber}</div>
-                  </div>
-                  <div className="d-flex gap-2 mb-4">
-                    <div className="fw-bold">Gender:</div>
-                    <div>{userData.gender}</div>
-                  </div>
+
                 </>
               ) : (
                 <div>Loading...</div>
