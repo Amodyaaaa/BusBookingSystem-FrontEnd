@@ -1,0 +1,192 @@
+.showCard {
+    margin-top: 3%;
+  }
+  
+  .formData {
+    margin-top: 3%;
+  }
+  
+  .InputData {
+    position: relative;
+    width: 290px;
+  }
+  
+  .mainCard {
+    background-color: white;
+    width: 700px;
+    padding: 10px;
+    margin-top: 50px;
+    border-radius: 4px;
+  }
+  
+  .InputDataLeft {
+    position: relative;
+    width: 290px;
+  }
+  
+  .errorContainer {
+    position: absolute;
+    top: 55%;
+    right: -15px;
+    transform: translateY(-50%);
+  }
+  
+  .errorIcon {
+    position: absolute;
+    color: red;
+    right: -25px;
+  }
+  
+  .errorText {
+    position: absolute;
+    bottom: 30%;
+    left: -35px;
+    width: 100px;
+    color: white;
+    background-color: #eb2929;
+    border: 1px solid #eb2929;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .errorText::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #eb2929 transparent transparent transparent;
+    font-size: 10px;
+  }
+  
+  .change-password-submit-button {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .bus_card_container {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    
+    /* Default: 4 columns */
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  @media (max-width: 1200px) {
+    /* Medium screens: 3 columns */
+    .bus_card_container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 900px) {
+    /* Smaller screens: 2 columns */
+    .bus_card_container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    /* Mobile: 1 column */
+    .bus_card_container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
+  
+  .home_bus_card {
+    background-color: #e8eef3;
+    box-shadow: 3px 3px 3px #a5a5a577;
+    width: 100%;
+    max-width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .home_bus_card:hover {
+    background-color: #d6e5f4;
+    box-shadow: 3px 3px 3px #91919177;
+  }
+  
+  .fixed-bottom-line {
+    font-weight: bold;
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 600px) {
+    .fixed-bottom-line {
+      font-size: 12px;
+      padding: 8px 3px;
+    }
+  }
+  
+  
+  .news-ticker {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .news-ticker span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 25s linear infinite;
+  }
+  
+  @keyframes ticker {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .bus_details_main_container {
+    padding-top: 20px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  
+  @media (max-width: 600px) {
+    .bus_details_main_container {
+      padding-left: 2vw;
+      padding-right: 2vw;
+    }
+  }
+  
+
+  .searchbar-container {
+    width: 80%;       /* Large screens: wider */
+    max-width: 900px; /* Max width */
+    margin: 0 auto;   /* Center horizontally */
+  }
+  
+  @media (max-width: 1200px) {
+    .searchbar-container {
+      width: 70%;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .searchbar-container {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .searchbar-container {
+      width: 80%;
+      padding: 0 10px; /* small padding on sides */
+    }
+  }
+  

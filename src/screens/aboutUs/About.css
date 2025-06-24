@@ -1,0 +1,120 @@
+.about-container {
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  z-index: 1;
+}
+.about-page-wrapper {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.06);
+  z-index: 0;
+}
+
+
+.about-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.06); /* Optional white overlay */
+  z-index: 0;
+}
+
+.about-description {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.about-left, .about-right {
+  border-radius: 10px;
+  padding: 2rem;
+  margin-top: 20px;
+  width: 48%;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.about-left h2, .about-right h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: font8;
+  position: relative;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.about-left h2::after,
+.about-right h2::after {
+  content: "";
+  width: 40px;
+  height: 5px;
+  background-color: #fde428;
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  border-radius: 20px;
+}
+
+.about-left p,
+.about-right p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 30px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px 50px;
+  }
+
+  .about-description {
+    flex-direction: column;
+  }
+
+  .about-left,
+  .about-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 20px 20px;
+  }
+
+  .about-left h2,
+  .about-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-left p,
+  .about-right p {
+    font-size: 0.85rem;
+  }
+}

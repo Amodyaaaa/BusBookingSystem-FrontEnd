@@ -1,0 +1,121 @@
+.signContainer2 {
+    padding-top: 30px;
+    /* padding-left: 80px;   */
+  }
+  
+  .centerSignIn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buttonsContainer {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .forgotPassword {
+    text-decoration: underline;
+    margin-top: 15px;
+    margin-right: 80px;
+    font-size: 14px;
+    transition: ease 0.2s;
+  }
+  
+  .forgotPassword:hover {
+    color: red;
+    cursor: pointer;
+  }
+  
+  .auth_container{
+    cursor: pointer !important;
+  }
+  .loginPageToggleButton:hover{
+  scale: 1.01;
+    box-shadow: 3px 3px 3px 0px rgba(208, 208, 208, 0.215);
+  }
+  
+  .imageContainer {
+    right: 0;
+    width: 70%;
+    height: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./../../assets/images/loginBackground.png");
+    border-radius: 10px 0px 0px 10px;
+  }
+  
+  .boxContainer {
+    display: flex;
+  }
+  
+  .imgContainerText {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .newHereContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .newHereButton2 {
+    margin-left: 100px;
+    margin-top: 5px;
+  }
+  
+  .signUpPage {
+    height: 100vh;
+    width: 100%;
+    background-color: #eaeaea;
+  }
+  
+  .whiteH2 {
+    color: white !important;
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .signInBox {
+    background-color: rgba(255, 255, 255);
+    width: 100% !important;
+    border-radius: 0px 10px 10px 0px;
+  }
+  
+  .signUpPageText {
+    color: rgb(195, 196, 196);
+  }
+  
+  .logoContainer {
+    padding: 10px 0px 0 20px;
+    position: absolute;
+  }
+  
+  .login_register_navigate_btn:hover {
+    color: var(--color_blue);
+   text-decoration: underline;
+   cursor: pointer;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .imgContainerText {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .imageContainer {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 590px) {
+    .auth_text {
+      display: none;
+    }
+  }
+  

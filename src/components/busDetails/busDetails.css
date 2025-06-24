@@ -1,0 +1,40 @@
+.bus_details_container :hover{
+    background-color: aliceblue;
+}
+.bus_details_container {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+.bus_details_container {
+cursor: pointer;
+border: 1px solid #e0e0e0;
+border-radius: 8px;
+margin-bottom: 10px;
+transition: background-color 0.3s ease;
+}
+
+.bus_details_container:hover {
+background-color: #f1f5f9;
+}
+
+.bus_details_row {
+height: 50px;
+color: #333333;
+font-size: 15px;
+display: flex;
+align-items: center;
+border-bottom: 1px solid #e0e0e0;
+}
+
+.bus_details_row div {
+padding: 10px;
+}
+
+.bus_name {
+font-weight: 500;
+}
+
+.seat_number, .start_place, .end_place {
+text-align: center;
+}

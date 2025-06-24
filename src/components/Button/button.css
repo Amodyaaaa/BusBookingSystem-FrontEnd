@@ -1,0 +1,39 @@
+.button-1 {
+    color: white;
+    height: 38px;
+    background-color:var(--color_blue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.1s;
+    width: 100%;
+    font-size: 16px;
+  }
+  .button-2 {
+    color: rgb(255, 255, 255);
+    height: 40px;
+    padding: 8px 12px;
+    background-color:black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    display: inline-block;
+    font-weight: 600;
+    transition: all 0.1s;
+  
+  }
+  
+  .button-1:hover {
+    background-color: #10427e;
+    color: white;
+    cursor: pointer;
+    scale: 1.01;
+  }
+  
+  .button-2:hover{
+    background-color: #fe5b00;
+    color: white;
+    cursor: pointer;
+  }

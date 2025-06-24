@@ -1,0 +1,123 @@
+/* NavbarBus.css */
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 480px 0 120px;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent background */
+    height: 100px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link-btn {
+    display: none;
+}
+
+.nav-link {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000; /* White text color */
+    font-family: font5;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+}
+
+.nav-link::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #ffffff; /* White underline */
+    margin: auto;
+    display: block;
+}
+
+.active {
+    color: #67a3da; /* Highlight color for active links */
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    transition: width 0.2s linear;
+}
+
+@media (max-width: 1224px) {
+    .navbar-container {
+        padding: 0 60px;
+    }
+    .nav-links {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar-container {
+        padding: 0 50px;
+    }
+    .nav-links {
+        gap: 5px;
+    }
+}
+
+@media (max-width: 980px) {
+    .nav-links {
+        width: 100%;
+        font-weight: 600;
+        flex-direction: column;
+        position: absolute;
+        top: 5rem;
+        color: #ffffff; /* White text color */
+        backdrop-filter: blur(50px);
+        padding: 2rem 5rem;
+        gap: 2rem;
+        left: -100%;
+        transition: all 0.5s ease-in-out;
+    }
+    .contact-us {
+        display: block !important;
+    }
+    .nav-link-btn {
+        display: block;
+        font-size: 1.2rem;
+        color: #ffffff; /* White icon color */
+        font-family: 'Open Sans', sans-serif;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 0 30px;
+    }
+    .nav-links {
+        padding: 2rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding: 0 20px;
+    }
+    .footer-flex {
+        flex-direction: column;
+    }
+    .footer-flex-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+    }
+}

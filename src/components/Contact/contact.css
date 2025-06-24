@@ -1,0 +1,53 @@
+.contact-page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.06); /* Optional overlay */
+}
+
+.contact-container {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  padding: 30px 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+/* ...existing CSS unchanged... */
+
+.contact-main {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00000020;
+}
+
+/* Add this for better spacing in responsiveness */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 20px;
+  }
+
+  .contact-main > h1 {
+    font-size: 1.5rem;
+  }
+
+  .contact-main > p {
+    font-size: 0.9rem;
+  }
+}
