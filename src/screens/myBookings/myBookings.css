@@ -1,0 +1,54 @@
+/* myBookings.css */
+.mybookings-container {
+    padding: 40px 10vw 60px;
+    background-color: transparent;
+    min-height: 100vh;
+  }
+  
+  .booking-card-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-row {
+    height: 45px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.979);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .booking-card-container {
+      padding: 20px 20px;
+    }
+  
+    .header-row > div {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .mybookings-container {
+      padding: 30px 5vw;
+    }
+  
+    .header-row {
+      font-size: 13px;
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+      padding: 10px 0;
+    }
+  
+    .header-row > div {
+      margin-bottom: 8px;
+    }
+  }
+  

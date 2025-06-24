@@ -1,0 +1,26 @@
+.addPaymentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 50vh; /* Ensure full viewport height */
+    height: calc( 100vh - 100px);
+  }
+  
+  .paycontainer {
+    padding: 10px;
+    background-color: #e4e4e4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .submitContainer {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+  }
+  .head{
+    margin-bottom: 25px;
+  }

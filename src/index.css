@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family:font5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+code {
+  font-family: 'Fira Code', monospace; /* Modern monospace font */
+}
+
+
+@font-face {
+  font-family: font0;
+  src: url(../src/assets/Fonts/f0.ttf);
+}
+@font-face {
+  font-family: font1;
+  src: url(../src/assets/Fonts/f1.ttf);
+}
+@font-face {
+  font-family: font2;
+  src: url(../src/assets/Fonts/f2.ttf);
+}
+@font-face {
+  font-family: font3;
+  src: url(../src/assets/Fonts/f3.ttf);
+}
+@font-face {
+  font-family: font4;
+  src: url(../src/assets/Fonts/f4.ttf);
+}
+@font-face {
+  font-family: font5;
+  src: url(../src/assets/Fonts/f5.ttf);
+}
+@font-face {
+  font-family: font6;
+  src: url(../src/assets/Fonts/f6.ttf);
+}
+@font-face {
+  font-family: font7;
+  src: url(../src/assets/Fonts/f7.ttf);
+}
+@font-face {
+  font-family: font8;
+  src: url(../src/assets/Fonts/f8.ttf);
+}

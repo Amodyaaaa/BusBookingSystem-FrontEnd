@@ -1,0 +1,10 @@
+.bus_details_main_container {
+    min-height: calc(100vh - 100px);
+  }
+  
+  .seats_container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+  }
+  

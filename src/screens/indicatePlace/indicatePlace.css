@@ -1,0 +1,26 @@
+.bus_details_main_container{
+    min-height: calc(100vh - 100px);
+}
+
+.routeAddButton:hover{
+    background-color:rgb(158, 158, 158) !important;
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .row {
+      flex-direction: column !important;
+      text-align: center;
+    }
+    .col-4, .col-3, .col-1 {
+      width: 100%;
+      padding: 5px 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .text-center.fw-bold {
+      font-size: 1rem !important;
+    }
+  }
+  

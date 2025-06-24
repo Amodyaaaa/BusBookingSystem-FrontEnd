@@ -1,0 +1,43 @@
+.bus_details_main_container{
+    min-height: calc(100vh - 100px);
+}
+
+.routeAddButton:hover{
+    background-color:rgb(158, 158, 158) !important;
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .enter-route-input-group {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 10px;
+    }
+  
+    .enter-route-input-group > div {
+      width: 100% !important;
+    }
+  
+    .routeAddButton {
+      width: 50px !important;
+      height: 50px !important;
+      font-size: 28px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .segment-row {
+      flex-direction: column !important;
+      padding: 10px;
+      height: auto !important;
+    }
+  
+    .segment-row .col-6 {
+      width: 100%;
+    }
+  
+    .segment-row .d-flex {
+      justify-content: space-between;
+    }
+  }
+  

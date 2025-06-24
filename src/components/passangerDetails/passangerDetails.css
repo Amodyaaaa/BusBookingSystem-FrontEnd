@@ -1,0 +1,7 @@
+.bus_details_container :hover{
+    background-color: aliceblue;
+}
+.bus_details_container {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
