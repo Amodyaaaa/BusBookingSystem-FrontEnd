@@ -15,7 +15,7 @@ const Home = () => {
 
   const getBussesData = async () => {
     try {
-      console.log("Search Text : ", searchText);
+      // console.log("Search Text : ", searchText);
       const response = await axios.get(
         `http://localhost:4000/bus/getAllBusesPagination?search=${searchText}`,
         {
