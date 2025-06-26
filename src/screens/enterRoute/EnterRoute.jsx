@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavbarBus from "../../components/NavbarBus/NavbarBus";
 import "./EnterRoute.css";
-import MyBookingModal from "../../components/MyBookingModal";
 import TextInput from "../../components/TextInput/TextInput";
 import Button from "../../components/Button/Button";
 import { FiPlus } from "react-icons/fi";
@@ -17,6 +16,7 @@ const EnterRoute = () => {
   const [routeNoError, setRouteNoError] = React.useState("");
   const [fixedRouteNo, setFixedRouteNo] = React.useState("");
   const [feePerKm, setFeePerKm] = useState("");
+  const [fixedfeePerKm, setFixedFeePerKm] = useState("");
   const [feePerKmError, setFeePerKmError] = useState("");
 
 
@@ -35,6 +35,8 @@ const EnterRoute = () => {
       if (response.data.success) {
         console.log(response.data.busRoot.root_number);
         setFixedRouteNo(response.data.busRoot.root_number);
+        setFeePerKm(response.data.busRoot.fee);
+        setFixedFeePerKm(response.data.busRoot.fee);
         setSegments(response.data.busRoot.segments);
       } 
     } catch (error) {
@@ -45,7 +47,7 @@ const EnterRoute = () => {
     getRouteData();
   }, []);
 
-  const saveRouteNo = () => {
+  const saveRouteNoandFee = () => {
     let hasError = false;
   
     if (routeNo === "") {
@@ -61,6 +63,7 @@ const EnterRoute = () => {
     if (hasError) return;
   
     setFixedRouteNo(routeNo);
+    setFixedFeePerKm(feePerKm);
   };
   
 
@@ -92,6 +95,7 @@ const EnterRoute = () => {
     <div style={{ position: "relative", zIndex: 2 }}>
       <AddPlaceModal
         routeNo={fixedRouteNo}
+        feePerKm = {fixedfeePerKm}
         show={modalShow}
         onHide={() => setModalShow(false)}
         segments={segments}
@@ -143,7 +147,7 @@ const EnterRoute = () => {
                     />
                   </div>
                   <div style={{ height: "36px", width: "80px" }}>
-                    <Button text="Save" type="1" onClick={saveRouteNo} />
+                    <Button text="Save" type="1" onClick={saveRouteNoandFee} />
                   </div>
                 </div>
               )}
@@ -152,6 +156,12 @@ const EnterRoute = () => {
                 <div className="  text-center d-flex gap-2 justify-content-center">
                   <div className=" fw-bold"> Route No : </div>{" "}
                   <div> {fixedRouteNo}</div>
+                </div>
+              )}
+              {fixedRouteNo !== "" && (
+                <div className="  text-center d-flex gap-2 justify-content-center">
+                  <div className=" fw-bold"> Fee per km: </div>{" "}
+                  <div> {fixedfeePerKm}</div>
                 </div>
               )}
               {fixedRouteNo && (

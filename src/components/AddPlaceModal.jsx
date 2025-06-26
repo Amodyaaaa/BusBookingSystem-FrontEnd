@@ -21,8 +21,9 @@ function AddPlaceModal(props) {
       distance: distance,
       travel_time: travelTime,
       root_number: props.routeNo,
+      fee: props.feePerKm,
     };
-    console.log(segmentData);
+
 
     const response = await axios.post(
       "http://localhost:4000/busroot/addBusRoot",

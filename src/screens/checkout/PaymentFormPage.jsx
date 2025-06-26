@@ -131,7 +131,7 @@ const PaymentForm = () => {
         <h2 className="form-title">Complete Your Booking</h2>
         <div className="booking-info">
           <span className="seat-count">{seatCount}</span> seat(s)
-          <span className="amount">${amount / 100}</span>
+          <span className="amount">LKR {amount / 100}</span>
         </div>
 
         <div className="form-group">
@@ -171,7 +171,7 @@ const PaymentForm = () => {
           className="submit-button"
           disabled={!stripe || processing}
         >
-          {processing ? "Processing..." : `Pay $${amount / 100}`}
+          {processing ? "Processing..." : `Pay LKR ${amount / 100}`}
         </button>
       </form>
     </div>
