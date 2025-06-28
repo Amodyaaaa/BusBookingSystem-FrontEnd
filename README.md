@@ -71,13 +71,11 @@ If the project uses packages like **React Router DOM**, install them using:
 
 ```bash
 npm install react-router-dom
-```
-
-Add others as needed, such as:
-
-```bash
 npm install axios
 npm install bootstrap
+npm install validator
+npm install react-toastify
+npm install web-vitals
 ```
 
 ---
