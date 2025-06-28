@@ -11,6 +11,8 @@ import background from "../../assets/images/background.jpeg";
 const MyBookings = () => {
   const [modalShow, setModalShow] = useState(false);
   const [bookings, setBookings] = useState([]);
+  const [selectedBooking, setSelectedBooking] = useState(null);
+
 
   const token = localStorage.getItem("token");
   const decodedToken = token ? jwtDecode(token) : null;
@@ -58,7 +60,7 @@ const MyBookings = () => {
       />
 
       <div style={{ position: "relative", zIndex: 2 }}>
-        <MyBookingModal show={modalShow} onHide={() => setModalShow(false)} />
+        <MyBookingModal show={modalShow} onHide={() => setModalShow(false)} booking={selectedBooking}/>
         <NavBar />
         <div className="bus_details_main_container mybookings-container">
           <div className="d-flex justify-content-center">
@@ -87,7 +89,10 @@ const MyBookings = () => {
                     seatNumber={booking.seatNumber}
                     startPlace={booking.startPlace}
                     endPlace={booking.endPlace}
-                    onClick={() => setModalShow(true)}
+                    onClick={() => {
+                      setSelectedBooking(booking);
+                      setModalShow(true)
+                    }}
                   />
                 ))
               ) : (

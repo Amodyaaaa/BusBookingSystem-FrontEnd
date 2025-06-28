@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import SignIn from "./screens/signIn/SignIn";
 import SignUp from "./screens/signUp/SignUp";
 import ForgotPassword from "./screens/forgotPassword/ForgotPassword";
@@ -29,6 +32,9 @@ const stripePromise = loadStripe(
 function App() {
   return (
     <div className="App">
+      <>
+        <ToastContainer position="top-right" autoClose={3000} />
+      </>
       <Routes>
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signInBus" element={<SignInForBus />} />

@@ -13,6 +13,9 @@ const SeatBookingPage = () => {
   const [busData, setBusData] = useState({});
   const [busLocations, setBusLocations] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [startPlace, setStartPlace] = useState("");
+  const [endPlace, setEndPlace] = useState("");
+
 
   const findAvailability = async () => {
     try {
@@ -88,7 +91,8 @@ const SeatBookingPage = () => {
     const seatCount = selectedSeats.length;
     const distance = 12; // replace with your logic
     const feePerKm = 15;
-    navigate(`/paymentForm?seatcount=${seatCount}&distance=${distance}&rate=${feePerKm}`);
+    const seatNumbers = selectedSeats.map((seat) => seat + 1);
+    navigate(`/paymentForm?seatcount=${seatCount}&distance=${distance}&rate=${feePerKm}&busId=${id}&startPlace=${startPlace}&endPlace=${endPlace}&seats=${seatNumbers.join(",")}`);
   };
 
   const handleSeatSelection = (index) => {
@@ -173,6 +177,7 @@ const SeatBookingPage = () => {
                     fontSize: "15px",
                   }}
                   defaultValue=""
+                  onChange={(e) => setStartPlace(e.target.value)}
                 >
                   <option style={{ color: "gray" }} value="" disabled hidden>
                     Start Place
@@ -195,6 +200,8 @@ const SeatBookingPage = () => {
                     color: "gray",
                     fontSize: "15px",
                   }}
+                  defaultValue=""
+                  onChange={(e) => setEndPlace(e.target.value)}
                 >
                   <option style={{ color: "gray" }} value="" disabled hidden> {/* selected */}
                     End Place
@@ -264,6 +271,7 @@ const SeatBookingPage = () => {
                           <input
                             type="checkbox"
                             checked={selectedSeats.includes(seatNumber)}
+                            disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
                             onChange={() => handleSeatSelection(seatNumber)}
                             style={{ scale: "1.4" }}
                           />
@@ -305,6 +313,7 @@ const SeatBookingPage = () => {
                                 <input
                                   type="checkbox"
                                   checked={selectedSeats.includes(seatNumber)}
+                                  disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
                                   onChange={() => handleSeatSelection(seatNumber)}
                                   style={{ scale: "1.4" }}
                                 />
@@ -340,6 +349,7 @@ const SeatBookingPage = () => {
                                 <input
                                   type="checkbox"
                                   checked={selectedSeats.includes(seatNumber)}
+                                  disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
                                   onChange={() => handleSeatSelection(seatNumber)}
                                   style={{ scale: "1.4" }}
                                 />
