@@ -232,9 +232,9 @@ const AddPayment = () => {
                   <div className="col-1 text-center">:</div>
                   <div className="col-6">{paymentData.phoneNumber}</div>
                 </div>
-                <div className="text-center mt-3">
-                  <Button type="2" text="Edit" onClick={() => { loadFormFromPayment(); setIsEditing(true); }} />
-                  <Button type="3" text="Delete" onClick={handleDelete} style={{ marginLeft: 10 }} />
+                <div className="text-center mt-3" style={{ display: "flex", justifyContent: "center", gap: "5rem" }}>
+                  <Button type="2" text="Edit" onClick={() => { loadFormFromPayment(); setIsEditing(true);}} />
+                  <Button type="3" text="Delete" onClick={handleDelete} />
                 </div>
               </>
             )}
