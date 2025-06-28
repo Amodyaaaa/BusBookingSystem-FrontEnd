@@ -86,7 +86,9 @@ const SeatBookingPage = () => {
 
   const handleBookSeats = () => {
     const seatCount = selectedSeats.length;
-    navigate(`/paymentForm/${seatCount}`);
+    const distance = 12; // replace with your logic
+    const feePerKm = 15;
+    navigate(`/paymentForm?seatcount=${seatCount}&distance=${distance}&rate=${feePerKm}`);
   };
 
   const handleSeatSelection = (index) => {
