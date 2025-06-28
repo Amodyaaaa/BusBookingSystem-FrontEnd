@@ -82,8 +82,6 @@ Open your browser and visit the URL to view the project.
 
 ---
 
-```
-
 The Simpler way ends Here. For More, Continue!!!
 
 ---
