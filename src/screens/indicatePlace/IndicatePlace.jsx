@@ -134,10 +134,10 @@ const IndicatePlace = () => {
           className="bus_details_main_container"
           style={{
             paddingTop: "20px",
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            ackgroundColor: "rgba(255,255,255,0.9)",
             padding: "20px 5vw",
             borderRadius: "10px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+
           }}
         >
           <div className="d-flex justify-content-center" style={{marginTop:"25px"}}>
@@ -145,7 +145,7 @@ const IndicatePlace = () => {
               style={{
                 maxWidth: "760px",
                 width: "100%",
-                backgroundColor: "rgba(255, 255, 255, 0.6)",
+                backgroundColor: "rgba(255,255,255,0.9)",
                 padding: "20px",
                 borderRadius: "10px",
               }}
