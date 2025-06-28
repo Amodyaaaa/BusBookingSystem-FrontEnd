@@ -48,7 +48,7 @@ function App() {
         <Route path="/enterRoute" element={<EnterRoute />} />
         <Route path="/indicatePlace" element={<IndicatePlace />} />
         <Route
-          path="/paymentForm/:seatCount"
+          path="/paymentForm"
           element={
             <Elements stripe={stripePromise}>
               <PaymentFormPage />

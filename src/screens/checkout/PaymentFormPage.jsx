@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import "./PaymentFormPage.css";
 
 const CARD_ELEMENT_OPTIONS = {
@@ -25,7 +25,7 @@ const CARD_ELEMENT_OPTIONS = {
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const { seatCount } = useParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -36,36 +36,80 @@ const PaymentForm = () => {
   const [success, setSuccess] = useState(false);
   const [showEmailConfirm, setShowEmailConfirm] = useState(false);
 
-  const amount = seatCount * 1000;
+  const seatCount = parseInt(searchParams.get("seatcount"));
+  const distance = parseFloat(searchParams.get("distance"));
+  const rate = parseFloat(searchParams.get("rate"));
+  const amount = seatCount * distance * rate;
+
+  const getLKRtoUSD = async () => {
+    const response = await fetch(
+      "https://v6.exchangerate-api.com/v6/7e9f2f90afbaa07287c1d0cf/latest/LKR"
+    );
+    const data = await response.json();
+    return data.conversion_rates.USD; // Example: 0.0031
+  };
+
+  const calculateUSD = async (lkrAmount) => {
+    const rate = await getLKRtoUSD();
+    const usdAmount = lkrAmount * rate;
+    return Math.round(usdAmount * 100); // Stripe expects amount in cents
+  };
 
   useEffect(() => {
     const createPaymentIntent = async () => {
       try {
+        const usdAmount = await calculateUSD(amount);
+        console.log("Creating payment intent for amount (cents):", usdAmount);
+
         const response = await axios.post(
           "http://localhost:4000/stripe/create-payment-intent",
           {
-            amount: amount,
+            amount: usdAmount,
           }
         );
+        console.log("PaymentIntent clientSecret:", response.data.clientSecret);
         setClientSecret(response.data.clientSecret);
+        setError(null);
       } catch (err) {
+        console.error("Error creating payment intent:", err);
         setError("Failed to load payment information. Please try again later.");
       }
     };
-    createPaymentIntent();
+
+    if (amount > 0) {
+      createPaymentIntent();
+    } else {
+      setError("Invalid payment amount.");
+    }
   }, [amount]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setProcessing(true);
+    setError(null);
 
     if (!stripe || !elements) {
+      setError("Stripe has not loaded yet.");
+      setProcessing(false);
+      return;
+    }
+
+    if (!clientSecret) {
+      setError("Payment is not initialized yet.");
+      setProcessing(false);
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
+    if (!cardElement) {
+      setError("Card details not found. Please enter your card information.");
+      setProcessing(false);
       return;
     }
 
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: cardElement,
         billing_details: {
           name: name,
           email: email,
@@ -82,8 +126,8 @@ const PaymentForm = () => {
         setError(null);
         setShowEmailConfirm(true);
       }
+      setProcessing(false);
     }
-    setProcessing(false);
   };
 
   const handleEmailConfirmation = async (sendEmail) => {
@@ -131,7 +175,7 @@ const PaymentForm = () => {
         <h2 className="form-title">Complete Your Booking</h2>
         <div className="booking-info">
           <span className="seat-count">{seatCount}</span> seat(s)
-          <span className="amount">LKR {amount / 100}</span>
+          <span className="amount">LKR {amount}</span>
         </div>
 
         <div className="form-group">
@@ -142,6 +186,7 @@ const PaymentForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            autoComplete="name"
           />
         </div>
 
@@ -153,6 +198,7 @@ const PaymentForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            autoComplete="email"
           />
         </div>
 
@@ -169,9 +215,9 @@ const PaymentForm = () => {
         <button
           type="submit"
           className="submit-button"
-          disabled={!stripe || processing}
+          disabled={!stripe || processing || !clientSecret}
         >
-          {processing ? "Processing..." : `Pay LKR ${amount / 100}`}
+          {processing ? "Processing..." : `Pay LKR ${amount}`}
         </button>
       </form>
     </div>
