@@ -82,6 +82,12 @@ Open your browser and visit the URL to view the project.
 
 ---
 
+```
+
+The Simpler way ends Here. For More, Continue!!!
+
+---
+
 ## 🛠️ Optional NPM Scripts
 
 If your project includes additional scripts in `package.json`, you can run them like so:
