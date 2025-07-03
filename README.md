@@ -47,7 +47,7 @@ cd my-app
 If you're working with an existing project:
 
 ```bash
-git clone https://github.com/your-username/your-frontend-project.git
+git clone https://github.com/Amodyaaaa/BusBookingSystem-FrontEnd.git
 cd your-frontend-project
 ```
 
