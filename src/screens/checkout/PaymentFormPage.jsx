@@ -44,17 +44,20 @@ const PaymentForm = () => {
   const [showEmailConfirm, setShowEmailConfirm] = useState(false);
 
   // Parse URL params and fallback with default safe values
+  const [fareData, setFareData] = useState({
+    feePerKm: 0,
+    distance: 0,
+    totalFare: 0
+  });
   const seatCount = Number(searchParams.get("seatcount")) || 0;
-  const distance = Number(searchParams.get("distance")) || 0;
-  const rate = Number(searchParams.get("rate")) || 0;
   const busId = searchParams.get("busId");
   const startPlace = searchParams.get("startPlace");
   const endPlace = searchParams.get("endPlace");
-  const amount = seatCount * distance * rate;
+  const amount = fareData.totalFare;
   const seatNumbersParam = searchParams.get("seats"); // e.g., "4,6,7"
   const seatNumbers = seatNumbersParam ? seatNumbersParam.split(",").map(Number) : [];
-
   
+
   // Fetch USD conversion rate for LKR
   const getLKRtoUSD = async () => {
     try {
@@ -169,7 +172,37 @@ const PaymentForm = () => {
     
   };
   
-
+  useEffect(() => {
+    const getFareDetails = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/bus/calculateFare", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            busId: busId,
+            startPlace: startPlace,
+            endPlace: endPlace,
+          },
+        });
+  
+        if (response.data.success) {
+          setFareData({
+            feePerKm: response.data.feePerKm,
+            distance: response.data.distance,
+            totalFare: response.data.totalFare * seatCount, // multiply by seats
+          });
+        }
+      } catch (err) {
+        console.error("Error fetching fare details:", err);
+      }
+    };
+  
+    if (busId && startPlace && endPlace && seatCount > 0) {
+      getFareDetails();
+    }
+  }, [busId, startPlace, endPlace, seatCount, token]);
+  
   const handleEmailConfirmation = async (sendEmail) => {
     if (sendEmail) {
       try {
