@@ -97,14 +97,11 @@ const PaymentForm = () => {
         setError("Failed to load payment information. Please try again later.");
       }
     };
-    if (!hasRun.current) {
-      hasRun.current = true;
+
       if (amount > 0) {
         createPaymentIntent();
-      } else {
-        setError("Invalid payment amount.");
-      }
-    }
+      } 
+    
   }, [amount]);
 
   const handleSubmit = async (event) => {
