@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
@@ -24,6 +24,7 @@ import IndicatePlace from "./screens/indicatePlace/IndicatePlace";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentFormPage from "./screens/checkout/PaymentFormPage";
+import Bus3DView from "./screens/bus3DView/bus3dview";
 
 const stripePromise = loadStripe(
   "pk_test_51PGuMfKJFjjdQS3oOBkk47IXhwyMC90IHaTDrT1wt9RSITO1goF5YVB6T2JtP6r8Xsfrzs6CVHAqA8QarGRtblyb00NVTRuxAV"
@@ -53,6 +54,7 @@ function App() {
         <Route path="/addPayment" element={<AddPayment />} />
         <Route path="/enterRoute" element={<EnterRoute />} />
         <Route path="/indicatePlace" element={<IndicatePlace />} />
+        <Route path="/bus/:id/3d" element={<Bus3DViewWrapper />} />
         <Route
           path="/paymentForm"
           element={
@@ -63,6 +65,18 @@ function App() {
         />
       </Routes>
     </div>
+  );
+}
+
+function Bus3DViewWrapper() {
+  const { state } = useLocation();
+  if (!state) return <div>No data provided</div>;
+  return (
+    <Bus3DView
+      rows={state.rows}
+      lastRowSeats={state.lastRowSeats}
+      selectedSeats={state.selectedSeats}
+    />
   );
 }
 
