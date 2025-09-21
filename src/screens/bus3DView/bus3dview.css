@@ -1,0 +1,15 @@
+html, body, #root, .App {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bus-3d-view {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111; /* optional */
+  }
+  

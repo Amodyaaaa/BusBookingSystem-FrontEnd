@@ -376,6 +376,17 @@ const SeatBookingPage = () => {
               <div style={{ width: "100px", marginTop:'2rem'}}>
                 <Button type="1" text="Book" onClick={handleBookSeats} />
               </div>
+              <div style={{ width: "120px", marginTop: "2rem", marginLeft: "1rem" }}>
+                <Button
+                  type="1"
+                  text="View 3D"
+                  onClick={() =>
+                    navigate(`/bus/${id}/3d`, {
+                      state: { rows, lastRowSeats, selectedSeats },
+                    })
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>

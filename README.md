@@ -76,6 +76,7 @@ npm install bootstrap
 npm install validator
 npm install react-toastify
 npm install web-vitals
+npm install three @react-three/fiber @react-three/drei
 ```
 
 ---
