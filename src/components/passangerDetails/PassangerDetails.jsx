@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./passangerDetails.css"
-const PassangerDetails = ({booking}) => {
+const PassangerDetails = ({booking, onClick}) => {
   return (
     <div
-      onClick={() => console.log("user clicked")}
+      onClick={onClick}
       className="container-fluid mt-1 bus_details_container"
       style={{ padding: "0" }}>
       <div className="d-flex justify-content-center">
@@ -16,17 +16,23 @@ const PassangerDetails = ({booking}) => {
             borderBottom: "1px solid #959595",
             borderRadius: "4px",
           }}>
-          <div className="col-4">
+          <div className="col-3">
             <div>{`${booking.passenger.firstName} ${booking.passenger.lastName}`}</div>
           </div>
-          <div className="col-2 text-center">
+          <div className="col-1 text-center">
             <div>{booking.seatNumber}</div>
           </div>
-          <div className="col-3">
+          <div className="col-2">
             <div>{booking.startPlace}</div>
           </div>
-          <div className="col-3">
+          <div className="col-2">
             <div>{booking.endPlace}</div>
+          </div>
+          <div className="col-2">
+            <div>{new Date(booking.bookingDate).toLocaleDateString()}</div>
+          </div>
+          <div className="col-2">
+            <div>{new Date(booking.bookingDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
           </div>
         </div>
       </div>

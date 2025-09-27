@@ -14,8 +14,9 @@ function MyBookingModal({ booking, onHide, ...props }) {
         <p><strong>Seat Number:</strong> {booking.seatNumber}</p>
         <p><strong>From:</strong> {booking.startPlace}</p>
         <p><strong>To:</strong> {booking.endPlace}</p>
-        <p><strong>Date:</strong> {booking.bookingDate}</p>
-        <p><strong>Fare:</strong> ${booking.fare}</p>
+        <p><strong>Date:</strong> {new Date(booking.bookingDate).toLocaleDateString()}</p>
+        <p><strong>Time:</strong> {new Date(booking.bookingDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+        <p><strong>Fare:</strong> LKR {booking.fare}/= </p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>Close</Button>

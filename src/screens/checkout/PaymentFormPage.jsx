@@ -54,6 +54,7 @@ const PaymentForm = () => {
   const startPlace = searchParams.get("startPlace");
   const endPlace = searchParams.get("endPlace");
   const amount = fareData.totalFare;
+  const distance = fareData.distance;  
   const seatNumbersParam = searchParams.get("seats"); // e.g., "4,6,7"
   const seatNumbers = seatNumbersParam ? seatNumbersParam.split(",").map(Number) : [];
   
@@ -149,6 +150,8 @@ const PaymentForm = () => {
           startPlace: startPlace,
           endPlace: endPlace,
           bookingDate: new Date().toISOString().split("T")[0],
+          fare: amount,
+          distance:distance,
         }, {
           headers: {
             Authorization: `Bearer ${token}`,
