@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useSearchParams, useNavigate } from "react-router-dom";
@@ -54,7 +54,8 @@ const PaymentForm = () => {
   const startPlace = searchParams.get("startPlace");
   const endPlace = searchParams.get("endPlace");
   const amount = fareData.totalFare;
-  const distance = fareData.distance;  
+  const distance = fareData.distance;
+  const feePerKm = fareData.feePerKm;  
   const seatNumbersParam = searchParams.get("seats"); // e.g., "4,6,7"
   const seatNumbers = seatNumbersParam ? seatNumbersParam.split(",").map(Number) : [];
   
@@ -81,7 +82,6 @@ const PaymentForm = () => {
     return Math.round(usdAmount * 100); // Stripe expects cents
   };
 
-  const hasRun = useRef(false);
 
   useEffect(() => {
     const createPaymentIntent = async () => {
@@ -103,7 +103,7 @@ const PaymentForm = () => {
         createPaymentIntent();
       } 
     
-  }, [amount]);
+  }, [amount, calculateUSD]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -247,8 +247,17 @@ const PaymentForm = () => {
       <form onSubmit={handleSubmit} className="payment-form">
         <h2 className="form-title">Complete Your Booking</h2>
         <div className="booking-info">
-          <span className="seat-count">{seatCount}</span> seat(s) -{" "}
-          <span className="amount">LKR {amount.toFixed(2)}</span>
+          <span className="label">Seats :</span>
+          <span className="value">{seatCount} ({seatNumbersParam})</span>
+
+          <span className="label">Total Distance :</span>
+          <span className="value">{distance} Km</span>
+
+          <span className="label">Fee per 1 KM :</span>
+          <span className="value">LKR {feePerKm.toFixed(2)}</span>
+
+          <span className="label">Total Fare :</span>
+          <span className="value amount">LKR {amount.toFixed(2)}</span>
         </div>
 
         <div className="form-group">

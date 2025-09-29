@@ -1,15 +1,47 @@
 html, body, #root, .App {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .bus-3d-view {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #111; /* optional */
-  }
-  
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bus-3d-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background: #111;
+}
+
+.bus-3d-view {
+  flex: 1; /* 3D view takes all available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #444;
+}
+
+.bus-3d-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  background: #222;
+  border-top: 1px solid #444;
+}
+
+.bus-3d-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-back {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-book {
+  background-color: #007bff;
+  color: white;
+}

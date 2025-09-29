@@ -2,6 +2,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./bus3dview.css";
 
 function Seat({ scene, position, isSelected }) {
@@ -22,9 +23,20 @@ function Seat({ scene, position, isSelected }) {
   return <primitive object={seatClone} position={position} scale={1} />;
 }
 
-export default function Bus3DView({ rows, lastRowSeats, selectedSeats }) {
+export default function Bus3DView() {
   const { scene } = useGLTF("/assets/bus_seat.glb");
+  const navigate = useNavigate();
+  const location = useLocation();
   const seats = [];
+
+  const {
+    rows = [],
+    lastRowSeats = 0,
+    selectedSeats = [],
+    startPlace = "",
+    endPlace = "",
+    busId = ""
+  } = location.state || {};
 
   let seatCounter = 0;
 
@@ -70,7 +82,15 @@ export default function Bus3DView({ rows, lastRowSeats, selectedSeats }) {
     seatCounter++;
   }
 
+  const handleBookSeats = () => {
+    const seatCount = selectedSeats.length;
+    const seatNumbers = selectedSeats.map((seat) => seat + 1);
+    navigate(`/paymentForm?seatcount=${seatCount}&busId=${busId}&startPlace=${startPlace}&endPlace=${endPlace}&seats=${seatNumbers.join(",")}`);
+  };
+
   return (
+    <div className="bus-3d-container">
+    {/* 3D Area */}
     <div className="bus-3d-view">
       <Canvas camera={{ position: [4, 4, 6], fov: 50 }}>
         <ambientLight intensity={0.5} />
@@ -83,16 +103,39 @@ export default function Bus3DView({ rows, lastRowSeats, selectedSeats }) {
         </mesh>
 
         {seats}
-        <OrbitControls 
-            enablePan={false}             // disable panning
-            minDistance={3}               // min zoom distance
-            maxDistance={10}              // max zoom distance
-            minPolarAngle={Math.PI / 4}   // limit vertical rotation (up/down)
-            maxPolarAngle={Math.PI / 2}   // limit vertical rotation
-            minAzimuthAngle={-Math.PI / 4} // limit horizontal rotation (left)
-            maxAzimuthAngle={Math.PI / 4}
+        <OrbitControls
+          enablePan={false}
+          minDistance={3}
+          maxDistance={10}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 2}
+          minAzimuthAngle={-Math.PI / 4}
+          maxAzimuthAngle={Math.PI / 4}
         />
       </Canvas>
     </div>
+
+    {/* Buttons below */}
+    <div className="bus-3d-actions">
+      <button
+        onClick={() =>
+          navigate(`/bookingSeat/${busId}`, { // replace with actual route path
+            state: {
+              selectedSeats: selectedSeats,
+              startPlace: startPlace,
+              endPlace: endPlace,
+            },
+          })
+        }
+        className="btn-back"
+      >
+        ⬅ Back
+      </button>
+
+
+      <button onClick={handleBookSeats} className="btn-book"> Book Selected Seats </button>
+    </div>
+  </div>
+
   );
 }
