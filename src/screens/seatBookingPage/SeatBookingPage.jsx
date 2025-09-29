@@ -5,10 +5,12 @@ import Button from "../../components/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import background from "../../assets/images/background.jpeg";
+import { useLocation } from "react-router-dom";
 
 const SeatBookingPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [busData, setBusData] = useState({});
   const [busLocations, setBusLocations] = useState([]);
@@ -86,6 +88,16 @@ const SeatBookingPage = () => {
     getBusDetails();
     getBusPlaces();
   }, [id]);
+
+  useEffect(()=>{
+    if (location.state) {
+
+      console.log(location.state);
+      setSelectedSeats(location.state.selectedSeats || []);
+      setStartPlace(location.state.startPlace || "");
+      setEndPlace(location.state.endPlace || "");
+    }
+  }, [location.state]);
 
   const handleBookSeats = () => {
     const seatCount = selectedSeats.length;
@@ -174,7 +186,7 @@ const SeatBookingPage = () => {
                     color: "gray",
                     fontSize: "15px",
                   }}
-                  defaultValue=""
+                  value={startPlace}
                   onChange={(e) => setStartPlace(e.target.value)}
                 >
                   <option style={{ color: "gray" }} value="" disabled hidden>
@@ -198,7 +210,7 @@ const SeatBookingPage = () => {
                     color: "gray",
                     fontSize: "15px",
                   }}
-                  defaultValue=""
+                  value={endPlace}
                   onChange={(e) => setEndPlace(e.target.value)}
                 >
                   <option style={{ color: "gray" }} value="" disabled hidden> {/* selected */}
@@ -382,7 +394,14 @@ const SeatBookingPage = () => {
                   text="View 3D"
                   onClick={() =>
                     navigate(`/bus/${id}/3d`, {
-                      state: { rows, lastRowSeats, selectedSeats },
+                      state: {
+                        rows,
+                        lastRowSeats,
+                        selectedSeats,
+                        startPlace:startPlace,
+                        endPlace: endPlace,
+                        busId: id,
+                      },
                     })
                   }
                 />

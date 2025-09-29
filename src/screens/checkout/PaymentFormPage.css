@@ -25,11 +25,31 @@
   
   .booking-info {
     background: #f6f9fc;
+    display: grid;
+    grid-template-columns: auto 1fr; /* label left, value right */
+    row-gap: 8px;
+    column-gap: 16px;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    color: #333;
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
+    border-radius: 8px;
+  }
+
+  .booking-info .label {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .booking-info .value {
+    text-align: right;
+    font-weight: 500;
+  }
+  
+  .booking-info .amount {
     font-size: 18px;
+    font-weight: 700;
+    color: #24b47e;
   }
   
   .seat-count {
