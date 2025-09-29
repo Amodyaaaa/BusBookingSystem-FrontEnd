@@ -51,7 +51,7 @@ function App() {
         <Route path="/busDetails/:id" element={<BusDetails />} />
         <Route path="/bookingSeat/:id" element={<SeatBookingPage />} />
         <Route path="/profile" element={<MyAccount />} />
-        <Route path="/addPayment" element={<AddPayment />} />
+        {/* <Route path="/addPayment" element={<AddPayment />} /> */}
         <Route path="/enterRoute" element={<EnterRoute />} />
         <Route path="/indicatePlace" element={<IndicatePlace />} />
         <Route path="/bus/:id/3d" element={<Bus3DViewWrapper />} />

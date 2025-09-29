@@ -17,9 +17,13 @@ const SeatBookingPage = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [startPlace, setStartPlace] = useState("");
   const [endPlace, setEndPlace] = useState("");
+  const [bookedSeats, setBookedSeats] = useState([]);
+
 
 
   const findAvailability = async () => {
+    const current_date = new Date().toISOString().split("T")[0];
+
     try {
       const response = await axios.get(
         `http://localhost:4000/busbook/checkAvailableSeats`,
@@ -29,12 +33,13 @@ const SeatBookingPage = () => {
           },
           params: {
             busId: id,
-            bookingDate: "05-06-2024",
+            bookingDate: current_date,
           },
         }
       );
       if (response.data.success) {
         console.log("🚀 ~ getBusDetails ~ response.data:", response.data);
+        setBookedSeats(response.data.bookedSeats || []);
         // Handle available seats data if needed
       } else {
         console.error("Failed to find availability");
@@ -281,7 +286,7 @@ const SeatBookingPage = () => {
                           <input
                             type="checkbox"
                             checked={selectedSeats.includes(seatNumber)}
-                            // disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
+                            disabled={bookedSeats.includes(seatNumber)} // disable other seats
                             onChange={() => handleSeatSelection(seatNumber)}
                             style={{ scale: "1.4" }}
                           />
@@ -323,7 +328,7 @@ const SeatBookingPage = () => {
                                 <input
                                   type="checkbox"
                                   checked={selectedSeats.includes(seatNumber)}
-                                  // disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
+                                  disabled={bookedSeats.includes(seatNumber)} // disable other seats
                                   onChange={() => handleSeatSelection(seatNumber)}
                                   style={{ scale: "1.4" }}
                                 />
@@ -359,7 +364,7 @@ const SeatBookingPage = () => {
                                 <input
                                   type="checkbox"
                                   checked={selectedSeats.includes(seatNumber)}
-                                  // disabled={selectedSeats.length === 1 && !selectedSeats.includes(seatNumber)} // disable other seats
+                                  disabled={bookedSeats.includes(seatNumber)} // disable other seats
                                   onChange={() => handleSeatSelection(seatNumber)}
                                   style={{ scale: "1.4" }}
                                 />
