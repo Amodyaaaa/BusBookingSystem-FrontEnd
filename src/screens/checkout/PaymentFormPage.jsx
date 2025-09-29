@@ -150,7 +150,7 @@ const PaymentForm = () => {
           startPlace: startPlace,
           endPlace: endPlace,
           bookingDate: new Date().toISOString().split("T")[0],
-          fare: amount,
+          fare: amount/seatCount,
           distance:distance,
         }, {
           headers: {

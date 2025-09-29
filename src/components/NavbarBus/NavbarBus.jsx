@@ -78,9 +78,9 @@ const NavbarBus = () => {
           <NavLink to="/enterRoute" className="nav-link" onClick={handleOpen}>
             My Route
           </NavLink>
-          <NavLink to="/addPayment" className="nav-link" onClick={handleOpen}>
+          {/* <NavLink to="/addPayment" className="nav-link" onClick={handleOpen}>
             Payment Details
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/busBookings" className="nav-link" onClick={handleOpen}>
             Bookings
           </NavLink>
