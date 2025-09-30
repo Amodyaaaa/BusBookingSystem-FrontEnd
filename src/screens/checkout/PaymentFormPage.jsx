@@ -64,7 +64,7 @@ const PaymentForm = () => {
   const getLKRtoUSD = async () => {
     try {
       const response = await fetch(
-        "https://v6.exchangerate-api.com/v6/7e9f2f90afbaa07287c1d0cf/latest/LKR"
+        "https://v6.exchangerate-api.com/v6/411a703d7dd0a596dc1374eb/latest/LKR"
       );
       const data = await response.json();
       return data.conversion_rates.USD;
@@ -311,3 +311,4 @@ const PaymentForm = () => {
 };
 
 export default PaymentForm;
+
